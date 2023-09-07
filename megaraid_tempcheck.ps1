@@ -48,7 +48,7 @@ $output = @"
 "@
 foreach ($drive in $driveInfo) {
     $output += @"
-P "MR C$($drive.Controller) - Enclosure $($drive.Enclosure) - Slot $($drive.Slot)" temperature=$($drive.Temperature);45;50;0;100 "Temperature:$($drive.Temperature)°C SN:$($drive.SN)"`n
+P "MR C$($drive.Controller) - Enclosure $($drive.Enclosure) - Slot $($drive.Slot)" temperature=$($drive.Temperature);45;50;0;100 Temperature:$($drive.Temperature)C SN:$($drive.SN)`n
 "@
 }
 
