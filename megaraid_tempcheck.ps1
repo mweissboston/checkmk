@@ -1,5 +1,8 @@
 $storcli = "C:\tools\storcli64.exe"
-$commandOutput = & $storcli " /call/eall/sall show all"
+$inputText = & $storcli " /call/eall/sall show all"
+
+
+$commandOutput = $inputText
 
 $drivePattern = "Drive /c(\d+)/e(\d{1,3})/s(\d+) - Detailed Information"
 $temperaturePattern = "Drive Temperature =\s+(\d+)C"
@@ -45,7 +48,7 @@ $output = @"
 "@
 foreach ($drive in $driveInfo) {
     $output += @"
-P "MR C$($drive.Controller) - Enclosure $($drive.Enclosure) - Slot $($drive.Slot)" temperature=$($drive.Temperature);45;50;0;100 SN: $($drive.SN)`n
+P "MR C$($drive.Controller) - Enclosure $($drive.Enclosure) - Slot $($drive.Slot)" temperature=$($drive.Temperature);45;50;0;100 "Temperature:$($drive.Temperature)°C SN:$($drive.SN)"`n
 "@
 }
 
